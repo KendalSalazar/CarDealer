@@ -1,0 +1,19 @@
+﻿@model Make 
+@*Indica que va a recibir un make, de ahi agarra el Name*@
+
+<form method="post">
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-primary">Create make</h2>
+        </div>
+        <label class="p-0" asp-for="Name"></label>
+        <input class="form-control" asp-for="Name" type="text">
+        <div class="p-2">
+            <span asp-validation-for="Name" class="pt-4 text-danger"></span>
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Create</button>
+    <a asp-area="Admin" asp-controller="Make" asp-action="Index" style="width:150px" class="btn btn-secondary">Return to list</a>
+</form>
+

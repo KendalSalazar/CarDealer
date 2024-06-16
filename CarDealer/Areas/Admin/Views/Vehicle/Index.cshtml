@@ -1,0 +1,27 @@
+﻿<partial name="_Notifications" />
+
+<div class="container">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">
+                List of vehicles
+            </h2>
+        </div>
+        <div class="col-6 text-end">
+            <a class="btn btn-primary" asp-area="Admin" asp-controller="Vehicle" asp-action="Upsert">Create new vehicle</a>
+        </div>
+    </div>
+
+    <table id="tblData" class="table table-bordered table-striped" style="width:100%">
+        <thead>
+        <th>Make</th>
+        <th>Model</th>
+        <th>Year</th>
+        <th>Price</th>
+        </thead>
+    </table>
+
+</div>
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script> 
+<script src="~/js/vehicle.js"></script>

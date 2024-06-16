@@ -1,0 +1,72 @@
+﻿@using CarDealer.Models.ViewModels
+
+@model VehicleVM
+
+<form method="post" enctype="multipart/form-data">
+
+    <input hidden asp-for="Vehicle.Id">
+    <input hidden asp-for="Vehicle.PictureUrl">
+
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-primary">@(Model.Vehicle.Id == 0 ? "Create" : "Update") Model</h2>
+        </div>
+    </div>
+
+    <div class="border p-3 mt-4">
+        <div class="mb-3">
+            <label asp-for="Vehicle.ModelId" class="p-0"></label>
+            <select asp-for="Vehicle.ModelId" asp-items="@Model.VehicleModelList" class="form-select">
+                <option disabled selected> --- Select Model --- </option>
+            </select>
+            <span asp-validation-for="Vehicle.ModelId" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Vehicle.Year" class="p-0"></label>
+            <input asp-for="Vehicle.Year" type="text" class="form-control"></input>
+            <span asp-validation-for="Vehicle.Year" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Vehicle.Price" class="p-0"></label>
+            <input asp-for="Vehicle.Price" type="text" class="form-control"></input>
+            <span asp-validation-for="Vehicle.Price" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Vehicle.PictureUrl" class="p-0"></label>
+            <input id="uploadBox" name="file" type="file" class="form-control">
+            <span asp-validation-for="Vehicle.PictureUrl" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Vehicle.Description" class="p-0"></label>
+            <textarea asp-for="Vehicle.Description" type="text" class="form-control"></textarea>
+            <span asp-validation-for="Vehicle.Description" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Save</button>
+        <a asp-area="Admin" asp-controller="Vehicle" asp-action="Index" style="width:150px" class="btn btn-secondary">Return to list</a>
+    </div>
+</form>
+
+@* es solo estetico para apartar scripts *@
+@section Scripts 
+{
+    <script src="https://cdn.tiny.cloud/1/pbjk224k70dso8h8dypazh3c45z17hl4ks7h8dgnrtfzpmy2/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>
+        tinymce.init({
+            selector: 'textarea',
+            plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed linkchecker a11ychecker tinymcespellchecker permanentpen powerpaste advtable advcode editimage advtemplate ai mentions tinycomments tableofcontents footnotes mergetags autocorrect typography inlinecss markdown',
+            toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
+            tinycomments_mode: 'embedded',
+            tinycomments_author: 'Author name',
+            mergetags_list: [
+                { value: 'First.Name', title: 'First Name' },
+                { value: 'Email', title: 'Email' },
+            ],
+            ai_request: (request, respondWith) => respondWith.string(() => Promise.reject("See docs to implement AI Assistant")),
+        });
+    </script>
+}

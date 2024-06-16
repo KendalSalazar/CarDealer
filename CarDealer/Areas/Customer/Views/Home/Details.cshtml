@@ -1,0 +1,23 @@
+﻿@model Vehicle
+
+<div class="container">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">Details of the vehicle</h2>
+        </div>
+        <div class="row pl-1">
+            <p class="text-primary">Year: @Model.Year</p>
+        </div>
+        <div class="row pl-2">
+            <p class="text-primary">Price: @Model.Price</p>
+        </div>
+        <div class="row pl-3">
+            <p class="text-primary">Description: @Html.Raw(Model.Description)</p>
+        </div>
+        <div class="row pl-4">
+            <p class="text-primary">Picture: @Model.PictureUrl</p>
+        </div>
+    </div>
+
+    <a asp-area="Customer" asp-controller="Home" asp-action="Index" style="width:150px" class="btn btn-primary">Return to list</a>
+</div>
